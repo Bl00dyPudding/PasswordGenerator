@@ -14,18 +14,15 @@ let makeItRandom = (a, b) => {
 let randomInteger = (min, max) => {
     let random = min - 0.5 + Math.random() * (max - min + 1);
     return Math.round(random);
-}
+};
 
 let rangeValue = (event) => {
-
     if (event.target.id === 'range') {
         document.getElementById('rangeValue').value = document.getElementById('range').value;
     }
-
     if (event.target.id === 'rangeValue') {
         document.getElementById('range').value = document.getElementById('rangeValue').value;
     }
-
 };
 
 let generatePassword = (event) => {
@@ -33,70 +30,54 @@ let generatePassword = (event) => {
     if (event.target.id === 'generatePassword') {
 
         let allSymbolsArray = [];
-
         if (document.getElementById('checkbox-lowercase').checked) {
             allSymbolsArray = allSymbolsArray.concat(lowercase);
         }
-
         if (document.getElementById('checkbox-uppercase').checked) {
             allSymbolsArray = allSymbolsArray.concat(uppercase);
         }
-
         if (document.getElementById('checkbox-numbers').checked) {
             allSymbolsArray = allSymbolsArray.concat(numbers);
         }
-
         if (document.getElementById('checkbox-symbols').checked) {
             allSymbolsArray = allSymbolsArray.concat(symbols);
         }
-
         if (allSymbolsArray.length === 0) {
             console.log('Выбери что-то');
         } else {
-
             allSymbolsArray.sort(makeItRandom);
-
             let passwordLength = parseInt(document.getElementById('rangeValue').value);
-
             if (passwordLength > 64 || passwordLength < 6) {
                 console.log('Зачем ты так?');
             }
 
-            let value = document.getElementById('generatePassword').getAttribute('value');
+            let newPassword = '';
+            for (let i = 0; i < passwordLength; i++) {
+                newPassword += allSymbolsArray[randomInteger(0, allSymbolsArray.length - 1)];
+            }
 
-            let generate = (value) => {
+            if (document.querySelector('.password') === true) {
+                document.querySelector('.generatedPassword').innerHTML = '';
+            }
 
-                let newPasswordsArray = [];
+            let div = document.createElement("div");
+            div.classList.add('password');
 
-                for (let j = 0; j < value; j++) {
+            let p = document.createElement('p');
+            p.innerText = newPassword;
 
-                    let newPassword = '';
+            let btn = document.createElement('button');
+            btn.classList.add('copy');
+            btn.innerText = 'copy';
 
-                    for (let i = 0; i < passwordLength; i++) {
-                        newPassword += allSymbolsArray[randomInteger(0, allSymbolsArray.length - 1)];
-                    }
+            div.appendChild(p);
+            div.appendChild(btn);
+            div = div.outerHTML;
+            document.querySelector('.generatedPassword').innerHTML = div;
 
-                    newPasswordsArray.push(newPassword);
-
-                }
-
-                return newPasswordsArray;
-            };
-
-            console.log(generate(value));
-
-            counter++;
-
-            if (counter === 1) {
-                document.getElementById('generatePassword').innerText = 'Еще!';
-            } else if (counter === 2) {
-                document.getElementById('generatePassword').innerText = 'Больше паролей!';
-            } else if (counter === 3) {
-                document.getElementById('generatePassword').innerText = 'ЕЩЕ!';
-            } else {
-                let button = document.getElementById('generatePassword');
-                button.innerText = 'Дайте 10!';
-                button.setAttribute('value', '10');
+            if (!document.getElementById('generatePassword').getAttribute('value')) {
+                document.getElementById('generatePassword').setAttribute('value', 'clicked');
+                document.getElementById('generatePassword').innerText = 'Хочу другой';
             }
 
         }
@@ -104,8 +85,6 @@ let generatePassword = (event) => {
     }
 
 };
-
-let counter = 0;
 
 document.addEventListener('mousemove', rangeValue);
 document.addEventListener('change', rangeValue);
