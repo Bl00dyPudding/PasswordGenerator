@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC');
 @import "colors";
 
 body {
-  //font-family: 'Roboto', sans-serif;
   font-family: 'Amatic SC', cursive;
   font-size: 1.5em;
   color: $color-text;
@@ -174,8 +172,8 @@ input[type=range]::-webkit-slider-thumb {
   }
   & #toCopy {
     padding: 1rem;
-    background: $color-background;
-    border-radius: 10px;
+    background: $color-thumb;
+    border: 1px solid $color-background;
     font-size: 2rem;
     margin: 0.5rem;
     text-align: center;
@@ -192,6 +190,8 @@ button {
   transition: .2s;
   outline: none;
   border: none;
+  border-radius: 10px;
+  color: $color-thumb;
   &:hover {
     background: lighten($color-main, 5%);
   }
@@ -206,4 +206,8 @@ button {
   &:disabled {
     background: $color-background;
   }
+}
+
+@media screen and (max-width: 55em) {
+
 }
