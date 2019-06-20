@@ -41,7 +41,7 @@ let rangeValue = (event) => {
         const btn = document.getElementById('generatePassword');
         btn.disabled = false;
         if (!btn.getAttribute('value')) {
-            btn.innerText =  'Генерируй';
+            btn.innerText =  'Сгенерировать';
         } else {
             btn.innerText =  'Хочу другой';
         }
@@ -87,7 +87,7 @@ let generatePassword = (event) => {
         let btn = document.createElement('button');
         btn.classList.add('copy');
         btn.id = 'copy';
-        btn.innerText = 'Copy';
+        btn.innerText = 'Скопировать';
         div.appendChild(p);
         div.appendChild(btn);
         div = div.outerHTML;
@@ -106,7 +106,7 @@ let generatePassword = (event) => {
         if (inputValue) {
             navigator.clipboard.writeText(inputValue)
                 .then(() => {
-                    document.getElementById('copy').innerText = 'Copied';
+                    document.getElementById('copy').innerText = 'Скопировано';
                 })
                 .catch(err => {
                     console.log('Что-то пошло не по плану :(', err);

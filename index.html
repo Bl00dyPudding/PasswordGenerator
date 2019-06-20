@@ -10,26 +10,37 @@
 </head>
 <body>
     <main class="main-content">
-        <h1 class="main-content__heading">Генератор паролей</h1>
+        <header class="header">
+            <h1 class="main-content__heading">Генератор паролей</h1>
+            <p class="main-content__text">Сгенерируй свой пароль</p>
+        </header>
 
         <section class="generator">
 
-            <label for="rangeValue">Длина пароля:</label><input type="number" id="rangeValue" max="64" min="6" value="12">
-            <input type="range" id="range" max="64" min="6" value="12">
+            <div class="range">
+                <label for="rangeValue">Длина пароля:</label><input type="text" id="rangeValue" max="64" min="6" value="12">
+                <input type="range" id="range" max="64" min="6" value="12">
+            </div>
 
-            <input type="checkbox" class="checkbox" id="checkbox-lowercase" checked>
-            <label for="checkbox-lowercase">Строчные буквы</label>
+            <div class="generator__checkboxes">
+                <div>
+                    <input type="checkbox" class="checkbox" id="checkbox-lowercase" checked>
+                    <label for="checkbox-lowercase">Строчные буквы</label>
 
-            <input type="checkbox" class="checkbox" id="checkbox-uppercase" checked>
-            <label for="checkbox-uppercase">Прописные буквы</label>
+                    <input type="checkbox" class="checkbox" id="checkbox-uppercase" checked>
+                    <label for="checkbox-uppercase">Прописные буквы</label>
+                </div>
 
-            <input type="checkbox" class="checkbox" id="checkbox-numbers">
-            <label for="checkbox-numbers">Цифры</label>
+                <div>
+                    <input type="checkbox" class="checkbox" id="checkbox-numbers">
+                    <label for="checkbox-numbers">Цифры</label>
 
-            <input type="checkbox" class="checkbox" id="checkbox-symbols">
-            <label for="checkbox-symbols">Символы</label>
+                    <input type="checkbox" class="checkbox" id="checkbox-symbols">
+                    <label for="checkbox-symbols">Символы</label>
+                </div>
+            </div>
 
-            <button id="generatePassword" value="">Генерируй</button>
+            <button id="generatePassword" value="">Сгенерировать</button>
 
         </section>
         <section class="generatedPassword"></section>
