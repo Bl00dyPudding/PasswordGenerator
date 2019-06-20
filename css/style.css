@@ -182,7 +182,7 @@ body {
   font-family: 'Amatic SC', cursive;
   font-size: 1.5em;
   color: #666;
-  background-color: #cdd1da;
+  background-color: #fff;
   background-image: url("../img/what-the-hex.png");
 }
 
@@ -200,6 +200,7 @@ body {
 }
 .main-content__text {
   margin: 0.5rem;
+  text-align: center;
 }
 
 .header {
@@ -239,7 +240,7 @@ input[type=text] {
   padding: 0 0.9rem;
   box-sizing: border-box;
   transition: .2s;
-  margin: 0 1rem;
+  margin: 0 1.2rem;
   border: 1px solid #cdd1da;
 }
 input[type=text]:focus {
@@ -381,6 +382,61 @@ button:active {
 }
 button:disabled {
   background: #cdd1da;
+}
+
+@media screen and (max-width: 960px) {
+  .main-content {
+    max-width: 100%;
+    grid-template-rows: 25% auto auto;
+    padding: 0;
+  }
+  .main-content__heading {
+    margin-top: 1rem;
+    font-size: 2.5rem;
+  }
+  .main-content__text {
+    font-size: 1.4rem;
+    word-wrap: break-word;
+    margin: 0.5rem 0;
+  }
+
+  .generator {
+    width: 100vw;
+    grid-template-columns: 1fr;
+    grid-template-areas: 'range' 'checkbox' 'button';
+  }
+  .generator .range {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .generator .range label {
+    margin-left: 1rem;
+  }
+  .generator .range #range {
+    width: 96%;
+    margin: 0.5rem 1.5%;
+  }
+  .generator__checkboxes {
+    justify-content: center;
+  }
+  .generator__checkboxes div {
+    justify-content: flex-start;
+  }
+
+  .generatedPassword .password {
+    align-items: center;
+  }
+  .generatedPassword #toCopy {
+    word-break: break-all;
+    box-sizing: border-box;
+    width: 90%;
+    max-width: 90vw;
+  }
+}
+@media screen and (max-width: 400px) {
+  .generator__checkboxes {
+    flex-direction: column;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
