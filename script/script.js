@@ -102,15 +102,29 @@ let generatePassword = (event) => {
     //Копирование в буфер обмена и изменение текста кнопки
     if (event.target.id === 'copy') {
 
-        const inputValue = document.getElementById('toCopy').innerText;
-        if (inputValue) {
-            navigator.clipboard.writeText(inputValue)
-                .then(() => {
-                    document.getElementById('copy').innerText = 'Скопировано';
-                })
-                .catch(err => {
-                    console.log('Что-то пошло не по плану :(', err);
-                })
+        if (navigator.clipboard) {
+            const inputValue = document.getElementById('toCopy').innerText;
+            if (inputValue) {
+                navigator.clipboard.writeText(inputValue)
+                    .then(() => {
+                        document.getElementById('copy').innerText = 'Скопировано';
+                    })
+                    .catch(err => {
+                        console.log('Что-то пошло не по плану :(', err);
+                    })
+            }
+        } else {
+            const inputValue = document.getElementById('toCopy');
+            let range = document.createRange();
+            range.selectNode(inputValue);
+            window.getSelection().addRange(range);
+            try {
+                document.execCommand('copy');
+                document.getElementById('copy').innerText = 'Скопировано';
+            } catch(err) {
+                console.log('Что-то пошло не по плану :(');
+            }
+            window.getSelection().removeAllRanges();
         }
 
     }
