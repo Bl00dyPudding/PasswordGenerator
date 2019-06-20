@@ -23,10 +23,25 @@ let randomInteger = (min, max) => {
 let rangeValue = (event) => {
     //Измениение значения поля ввода в зависимости от измениний ползунка
     if (event.target.id === 'range') {
+        if (document.getElementById('range').getAttribute('max') != 64) {
+            document.getElementById('range').setAttribute('max', '64');
+        }
+        if (document.getElementById('range').getAttribute('min') != 6) {
+            document.getElementById('range').setAttribute('min', '6');
+        }
         document.getElementById('rangeValue').value = document.getElementById('range').value;
     }
     //Измениение значения ползунка в зависимости от измениний поля ввода
     if (event.target.id === 'rangeValue') {
+        if (isNaN(document.getElementById('rangeValue').value)) {
+            document.getElementById('rangeValue').value = 6;
+        }
+        if (document.getElementById('rangeValue').value < 6) {
+            document.getElementById('rangeValue').value = 6;
+        }
+        if (document.getElementById('rangeValue').value > 64) {
+            document.getElementById('rangeValue').value = 64;
+        }
         document.getElementById('range').value = document.getElementById('rangeValue').value;
     }
     //Отключение кнопки генерации, если не выбран модификатор
