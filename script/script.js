@@ -23,6 +23,7 @@ let randomInteger = (min, max) => {
 let rangeValue = (event) => {
     //Измениение значения поля ввода в зависимости от измениний ползунка
     if (event.target.id === 'range') {
+        console.log(event);
         if (document.getElementById('range').getAttribute('max') != 64) {
             document.getElementById('range').setAttribute('max', '64');
         }
@@ -146,6 +147,7 @@ let generatePassword = (event) => {
 
 };
 //Слушатели событий
+document.addEventListener('touchmove', rangeValue);
 document.addEventListener('mousemove', rangeValue);
 document.addEventListener('change', rangeValue);
 document.addEventListener('click', generatePassword);
