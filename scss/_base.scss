@@ -44,6 +44,7 @@ body {
   & .range {
     height: 20%;
     margin: auto;
+    user-select: none;
   }
   & #generatePassword {
     grid-area: button;
@@ -123,6 +124,8 @@ input[type=range]::-webkit-slider-thumb {
   padding: 0 0 0 60px;
   cursor: pointer;
   margin:  1rem;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .checkbox + label:before {
