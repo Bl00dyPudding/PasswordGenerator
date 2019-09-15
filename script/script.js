@@ -23,7 +23,6 @@ let randomInteger = (min, max) => {
 let rangeValue = (event) => {
     //Измениение значения поля ввода в зависимости от измениний ползунка
     if (event.target.id === 'range') {
-        console.log(event);
         if (document.getElementById('range').getAttribute('max') != 64) {
             document.getElementById('range').setAttribute('max', '64');
         }

@@ -42,6 +42,7 @@ body {
           'range checkbox'
           'button button';
   & .range {
+    height: 20%;
     margin: auto;
   }
   & #generatePassword {
@@ -163,8 +164,7 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 .generatedPassword {
-  margin: 2rem auto 0;
-  width: 80%;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -213,7 +213,7 @@ button {
 @media screen and (max-width: 960px) {
   .main-content {
     max-width: 100%;
-    grid-template-rows: 25% auto auto;
+    grid-template-rows: 20% 40% 40%;
     padding: 0;
 
     &__heading {
@@ -232,18 +232,22 @@ button {
     width: 100vw;
     grid-template-columns: 1fr;
     grid-template-areas: 'range' 'checkbox' 'button';
+    margin: 0;
 
     & .range {
       width: 100%;
       box-sizing: border-box;
+      margin-top: 1rem;
+
       & label {
         margin-left: 1rem;
       }
 
       & #range {
         width: 96%;
-        margin: 0.5rem 1.5%;
+        margin: 1rem 1.5%;
       }
+
     }
     &__checkboxes {
       justify-content: center;
@@ -261,7 +265,6 @@ button {
     & #toCopy {
       word-break: break-all;
       box-sizing: border-box;
-      //width: 90%;
       max-width: 90vw;
     }
   }
@@ -273,5 +276,15 @@ button {
     &__checkboxes {
       flex-direction: column;
     }
+    & .range {
+      & #range {
+        margin-bottom: .5rem;
+      }
+    }
+  }
+
+  .checkbox + label {
+    margin-top:  .3rem;
+    margin-bottom:  .3rem;
   }
 }
